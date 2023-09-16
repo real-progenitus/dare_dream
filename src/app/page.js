@@ -1,13 +1,9 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import Head from "next/head";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Head>
-        <title>DareDream</title>
-      </Head>
       <div className={styles.description}>
         <p>DareDream</p>
         <div>By Jaipi and Progen</div>
