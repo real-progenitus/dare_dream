@@ -39,11 +39,11 @@
   font-family: var(--font-mono);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
-  max-width: 100%;
-  width: var(--max-width);
+.footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--max-width);
 }
 
 .card {
@@ -80,6 +80,12 @@
   padding: 4rem 0;
 }
 
+.centerContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
 .center::before {
   background: var(--secondary-glow);
   border-radius: 50%;
@@ -97,7 +103,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);
@@ -106,6 +112,11 @@
 
 .logo {
   position: relative;
+}
+
+.title {
+  margin: 16px;
+  font-size: 24px;
 }
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
@@ -129,13 +140,6 @@
 @media (max-width: 700px) {
   .content {
     padding: 4rem;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    margin-bottom: 120px;
-    max-width: 320px;
-    text-align: center;
   }
 
   .card {
@@ -199,13 +203,6 @@
       rgb(var(--background-end-rgb)) 40%
     );
     z-index: 1;
-  }
-}
-
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-  .grid {
-    grid-template-columns: repeat(2, 50%);
   }
 }
 
