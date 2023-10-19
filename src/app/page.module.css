@@ -1,10 +1,16 @@
 .main {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
   display: flex;
+  max-width: 1400px;
+  height: 100vh;
+  margin: auto;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
 }
 
 .description {
@@ -84,6 +90,8 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  width: 60vw;
+  height: 40vh;
 }
 
 .center::before {
