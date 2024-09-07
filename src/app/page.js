@@ -11,6 +11,22 @@ export default function V2() {
   const [nextImageIndex, setNextImageIndex] = useState(1); // Track the next image to fade in
   const [fadeIn, setFadeIn] = useState(false); // Control fade-in effect
 
+  const setVh = () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  };
+
+  // useEffect hook to set the vh value when the component mounts
+  useEffect(() => {
+    setVh(); // Set on load
+    window.addEventListener("resize", setVh); // Update on resize
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", setVh);
+    };
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setFadeIn(true); // Start fading in the next image
@@ -32,7 +48,7 @@ export default function V2() {
     <div
       style={{
         width: "100vw",
-        height: "100vh",
+        height: "calc(var(--vh, 1vh) * 100)", // Use the dynamic vh value
         overflow: "hidden",
         position: "relative",
         userSelect: "none",
