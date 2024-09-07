@@ -9,14 +9,16 @@ const PullUpMenu = () => {
   const [bottomPosition, setBottomPosition] = useState(1000);
   const [bottomLimit, setBottomLimit] = useState(1000);
   const [hasTransition, setHasTransition] = useState(false);
-  const [ratio, setRatio] = useState(1);
   const menuRef = useRef(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const calculatedRatio = window.innerHeight / window.screen.height;
-      setRatio(calculatedRatio);
-      setBottomLimit(menuRef?.current?.offsetHeight * calculatedRatio - 60);
+      setBottomLimit(
+        menuRef?.current?.offsetHeight * calculatedRatio - calculatedRatio < 1
+          ? 60
+          : 100
+      );
     }
   }, []);
 
