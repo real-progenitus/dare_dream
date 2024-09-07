@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { crimsonText } from "@/utils/fonts";
 import useDragDetector from "@/components/hooks/drag-detector";
 import Image from "next/image";
@@ -11,8 +11,10 @@ const PullUpMenu = () => {
   const [hasTransition, setHasTransition] = useState(false);
   const menuRef = useRef(null);
 
-  useEffect(() => {
-    setBottomLimit(menuRef?.current?.offsetHeight - 100);
+  useLayoutEffect(() => {
+    const ratio = window.innerHeight / window.screen.height;
+
+    setBottomLimit(menuRef?.current?.offsetHeight * ratio - 100);
   }, []);
 
   useEffect(() => {
