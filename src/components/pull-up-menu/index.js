@@ -16,7 +16,7 @@ const PullUpMenu = () => {
     if (typeof window !== "undefined") {
       const calculatedRatio = window.innerHeight / window.screen.height;
       setRatio(calculatedRatio);
-      setBottomLimit(menuRef?.current?.offsetHeight * calculatedRatio - 100);
+      setBottomLimit(menuRef?.current?.offsetHeight * calculatedRatio - 60);
     }
   }, []);
 
