@@ -11,7 +11,7 @@ const PullUpMenu = () => {
   const [hasTransition, setHasTransition] = useState(false);
   const menuRef = useRef(null);
 
-  useEffect(() => {
+  const setVh = () => {
     if (typeof window !== "undefined") {
       const calculatedRatio = window.innerHeight / window.screen.height;
       setBottomLimit(
@@ -19,6 +19,17 @@ const PullUpMenu = () => {
           (calculatedRatio < 1 ? 60 : 100)
       );
     }
+  };
+
+  useEffect(() => {
+    setVh();
+
+    window.addEventListener("resize", setVh); // Update on resize
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", setVh);
+    };
   }, []);
 
   useEffect(() => {
