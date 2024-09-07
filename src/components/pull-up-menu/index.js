@@ -94,9 +94,7 @@ const PullUpMenu = () => {
             onClick={() => {
               setHasTransition(true);
               setBottomPosition(
-                bottomPosition !== bottomLimit
-                  ? menuRef?.current?.offsetHeight * ratio - 100
-                  : 0
+                bottomPosition !== bottomLimit ? bottomLimit : 0
               );
             }}
           >
